@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Scholarships - JAGO</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0b2046',
+              green: '#0b5d44',
+              lightGreen: '#e7f3ef',
+              subtleBg: '#f8faf9',
+              slate: '#596780',
+              accentGreen: '#0d7355',
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="base-styling">
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      background-color: #e5e7eb;
+    }
+    /* Hide scrollbars for clean native appearance */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style data-purpose="illustrations">
+    /* Subtle decorative green hills illustration at the bottom of the content stream */
+    .hills-bg {
+      background-image: 
+        radial-gradient(circle at 20% 120%, rgba(200, 230, 215, 0.45) 0%, rgba(200, 230, 215, 0) 55%),
+        radial-gradient(circle at 80% 115%, rgba(185, 222, 205, 0.4) 0%, rgba(185, 222, 205, 0) 60%),
+        radial-gradient(circle at 50% 130%, rgba(165, 210, 190, 0.3) 0%, rgba(165, 210, 190, 0) 65%);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="flex justify-center items-center min-h-screen py-0 sm:py-6">
+<!-- BEGIN: Phone Frame Device Wrapper -->
+<div class="relative w-full max-w-[390px] h-[844px] bg-[#fbfbf9] overflow-hidden sm:rounded-[48px] shadow-2xl flex flex-col border border-slate-200/80">
+<!-- BEGIN: iOS Status Bar -->
+<header class="w-full pt-3 px-7 pb-2 flex justify-between items-center text-slate-900 z-30 select-none" data-purpose="status-bar">
+<!-- Time Display -->
+<span class="text-[15px] font-semibold tracking-tight">9:41</span>
+<!-- Right Status Indicators (Cellular, WiFi, Battery) -->
+<div class="flex items-center space-x-2">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-3.5 fill-current" viewBox="0 0 17 12">
+<rect height="3.5" rx="0.6" width="2.5" x="0" y="8.5"></rect>
+<rect height="6" rx="0.6" width="2.5" x="4.5" y="6"></rect>
+<rect height="8.5" rx="0.6" width="2.5" x="9" y="3.5"></rect>
+<rect height="11.5" rx="0.6" width="2.5" x="13.5" y="0.5"></rect>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg class="w-4 h-3.5 fill-current" viewBox="0 0 16 12">
+<path d="M8 2.5C10.7 2.5 13.1 3.6 14.9 5.3L16 4.1C13.9 2.1 11.1 0.8 8 0.8C4.9 0.8 2.1 2.1 0 4.1L1.1 5.3C2.9 3.6 5.3 2.5 8 2.5ZM8 6.5C9.7 6.5 11.3 7.2 12.4 8.4L13.5 7.2C12.1 5.8 10.2 4.9 8 4.9C5.8 4.9 3.9 5.8 2.5 7.2L3.6 8.4C4.7 7.2 6.3 6.5 8 6.5ZM8 10C8.8 10 9.5 10.7 9.5 11.5C9.5 12.3 8.8 13 8 13C7.2 13 6.5 12.3 6.5 11.5C6.5 10.7 7.2 10 8 10Z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-5 h-[11px] border border-slate-900 rounded-[3px] p-[1px] flex items-center">
+<div class="w-full h-full bg-slate-900 rounded-[1.5px]"></div>
+</div>
+<div class="w-[1.5px] h-1 bg-slate-900 rounded-r-sm -ml-[0.5px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- BEGIN: Main Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24 relative hills-bg" data-purpose="main-screen-content">
+<!-- BEGIN: Header Section -->
+<section class="px-5 pt-3 pb-2" data-purpose="screen-header">
+<div class="flex justify-between items-center">
+<h1 class="text-[28px] font-bold tracking-tight text-[#0f233a]">Scholarships</h1>
+<!-- Search Button Icon -->
+<button aria-label="Search" class="p-2 -mr-1.5 text-slate-700 hover:text-slate-900 active:scale-95 transition-transform" type="button">
+<svg class="w-6 h-6 stroke-[2.2] stroke-current fill-none" viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="7"></circle>
+<line stroke-linecap="round" x1="16.5" x2="21.5" y1="16.5" y2="21.5"></line>
+</svg>
+</button>
+</div>
+<p class="text-[14px] text-[#556987] font-normal mt-0.5 tracking-tight">Find the right opportunity for your studies.</p>
+</section>
+<!-- END: Header Section -->
+<!-- BEGIN: Filter Chips Section -->
+<section class="px-5 py-3 overflow-x-auto no-scrollbar flex items-center gap-2" data-purpose="filter-pills">
+<!-- Active Filter: All -->
+<button class="px-4 py-1.5 rounded-full bg-[#0d5940] text-white text-[13px] font-medium shadow-sm active:scale-95 transition-all">
+          All
+        </button>
+<!-- Inactive Filter: School -->
+<button class="px-4 py-1.5 rounded-full bg-white text-[#52637a] text-[13px] font-medium border border-slate-200/90 active:scale-95 transition-all">
+          School
+        </button>
+<!-- Inactive Filter: College -->
+<button class="px-4 py-1.5 rounded-full bg-white text-[#52637a] text-[13px] font-medium border border-slate-200/90 active:scale-95 transition-all">
+          College
+        </button>
+<!-- Inactive Filter: Fellowship -->
+<button class="px-4 py-1.5 rounded-full bg-white text-[#52637a] text-[13px] font-medium border border-slate-200/90 active:scale-95 transition-all">
+          Fellowship
+        </button>
+</section>
+<!-- END: Filter Chips Section -->
+<!-- BEGIN: Scholarship Card List -->
+<section class="px-4 pt-2 flex flex-col space-y-3" data-purpose="scholarship-card-list">
+<!-- Card 1: Pre-Matric Scholarship -->
+<article class="bg-white rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-slate-100 flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge (Orange) -->
+<div class="w-13 h-13 min-w-[50px] min-h-[50px] rounded-xl bg-[#fff2ec] flex items-center justify-center p-2.5">
+<svg class="w-7 h-7 text-[#ef5a24]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<!-- Graduation Cap & School Icon Combination -->
+<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+<path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+</svg>
+</div>
+<!-- Card Details -->
+<div class="flex flex-col">
+<h2 class="text-[15px] font-bold text-[#0f233a] leading-tight">Pre-Matric Scholarship</h2>
+<p class="text-[12.5px] text-[#556987] mt-0.5 font-normal">For students studying up to Class X.</p>
+<div class="inline-flex items-center text-[#0d5940] text-[13px] font-semibold mt-1.5 group">
+<span>View details</span>
+<span class="ml-1 tracking-tight">→</span>
+</div>
+</div>
+</div>
+<!-- Chevron Right -->
+<svg class="w-5 h-5 text-slate-400 stroke-[2] stroke-current fill-none mr-0.5 flex-shrink-0" viewBox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</article>
+<!-- Card 2: Post-Matric Scholarship -->
+<article class="bg-white rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-slate-100 flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge (Teal/Green) -->
+<div class="w-13 h-13 min-w-[50px] min-h-[50px] rounded-xl bg-[#eaf5ef] flex items-center justify-center p-2.5">
+<svg class="w-7 h-7 text-[#197a5b]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<!-- Cap with Books underneath -->
+<path d="M2 9l10-5 10 5-10 5z"></path>
+<path d="M6 12v3c0 2 6 3 6 3s6-1 6-3v-3"></path>
+<path d="M4 18h16"></path>
+<path d="M4 21h16"></path>
+</svg>
+</div>
+<!-- Card Details -->
+<div class="flex flex-col">
+<h2 class="text-[15px] font-bold text-[#0f233a] leading-tight">Post-Matric Scholarship</h2>
+<p class="text-[12.5px] text-[#556987] mt-0.5 font-normal">For students continuing education after Class X.</p>
+<div class="inline-flex items-center text-[#0d5940] text-[13px] font-semibold mt-1.5">
+<span>View details</span>
+<span class="ml-1 tracking-tight">→</span>
+</div>
+</div>
+</div>
+<!-- Chevron Right -->
+<svg class="w-5 h-5 text-slate-400 stroke-[2] stroke-current fill-none mr-0.5 flex-shrink-0" viewBox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</article>
+<!-- Card 3: National Scholarship -->
+<article class="bg-white rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-slate-100 flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge (Blue Certificate) -->
+<div class="w-13 h-13 min-w-[50px] min-h-[50px] rounded-xl bg-[#eef4ff] flex items-center justify-center p-2.5">
+<svg class="w-7 h-7 text-[#2563eb]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<!-- Document Certificate with Ribbon -->
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="8" x2="16" y1="13" y2="13"></line>
+<line x1="8" x2="12" y1="17" y2="17"></line>
+<circle cx="16" cy="18" fill="#fef3c7" r="2.5" stroke="#f59e0b"></circle>
+</svg>
+</div>
+<!-- Card Details -->
+<div class="flex flex-col">
+<h2 class="text-[15px] font-bold text-[#0f233a] leading-tight">National Scholarship</h2>
+<p class="text-[12.5px] text-[#556987] mt-0.5 font-normal">For higher education students.</p>
+<div class="inline-flex items-center text-[#0d5940] text-[13px] font-semibold mt-1.5">
+<span>View details</span>
+<span class="ml-1 tracking-tight">→</span>
+</div>
+</div>
+</div>
+<!-- Chevron Right -->
+<svg class="w-5 h-5 text-slate-400 stroke-[2] stroke-current fill-none mr-0.5 flex-shrink-0" viewBox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</article>
+<!-- Card 4: National Fellowship -->
+<article class="bg-white rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-slate-100 flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge (Deep Blue Binoculars) -->
+<div class="w-13 h-13 min-w-[50px] min-h-[50px] rounded-xl bg-[#eaf1fb] flex items-center justify-center p-2.5">
+<svg class="w-7 h-7 text-[#1d4ed8]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<!-- Binoculars icon -->
+<circle cx="7" cy="15" r="4"></circle>
+<circle cx="17" cy="15" r="4"></circle>
+<path d="M7 11V6a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v5"></path>
+<path d="M14 11V6a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v5"></path>
+<line x1="10" x2="14" y1="8" y2="8"></line>
+</svg>
+</div>
+<!-- Card Details -->
+<div class="flex flex-col">
+<h2 class="text-[15px] font-bold text-[#0f233a] leading-tight">National Fellowship</h2>
+<p class="text-[12.5px] text-[#556987] mt-0.5 font-normal">For research and higher studies.</p>
+<div class="inline-flex items-center text-[#0d5940] text-[13px] font-semibold mt-1.5">
+<span>View details</span>
+<span class="ml-1 tracking-tight">→</span>
+</div>
+</div>
+</div>
+<!-- Chevron Right -->
+<svg class="w-5 h-5 text-slate-400 stroke-[2] stroke-current fill-none mr-0.5 flex-shrink-0" viewBox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</article>
+<!-- Card 5: National Overseas Scholarship -->
+<article class="bg-white rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-slate-100 flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge (Globe) -->
+<div class="w-13 h-13 min-w-[50px] min-h-[50px] rounded-xl bg-[#eef2fe] flex items-center justify-center p-2.5">
+<svg class="w-7 h-7 text-[#3b66f5]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<!-- Globe / Overseas Network Icon -->
+<circle cx="12" cy="12" r="9"></circle>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<path d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9z"></path>
+</svg>
+</div>
+<!-- Card Details -->
+<div class="flex flex-col">
+<h2 class="text-[15px] font-bold text-[#0f233a] leading-tight">National Overseas Scholarship</h2>
+<p class="text-[12.5px] text-[#556987] mt-0.5 font-normal">For higher studies abroad.</p>
+<div class="inline-flex items-center text-[#0d5940] text-[13px] font-semibold mt-1.5">
+<span>View details</span>
+<span class="ml-1 tracking-tight">→</span>
+</div>
+</div>
+</div>
+<!-- Chevron Right -->
+<svg class="w-5 h-5 text-slate-400 stroke-[2] stroke-current fill-none mr-0.5 flex-shrink-0" viewBox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</article>
+</section>
+<!-- END: Scholarship Card List -->
+</main>
+<!-- END: Main Scrollable Content Area -->
+<!-- BEGIN: Persistent Bottom Navigation Bar -->
+<nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-100 flex flex-col justify-end z-40" data-purpose="bottom-navigation">
+<div class="grid grid-cols-5 items-center px-1 pt-2 pb-1">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-700 py-1 transition-colors" href="#">
+<svg class="w-6 h-6 stroke-[1.8] stroke-current fill-none" viewBox="0 0 24 24">
+<path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-9.5z"></path>
+</svg>
+<span class="text-[10.5px] font-normal mt-1">Home</span>
+</a>
+<!-- Tab 2: Scholarships (Active) -->
+<a class="flex flex-col items-center justify-center text-[#0d5940] font-medium py-1" href="#">
+<div class="relative">
+<svg class="w-6 h-6 stroke-[2] stroke-current fill-none" viewBox="0 0 24 24">
+<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+<path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+</svg>
+</div>
+<span class="text-[10.5px] font-semibold mt-1">Scholarships</span>
+</a>
+<!-- Tab 3: JAGO (Center Highlighted Floating Action/Badge) -->
+<div class="flex flex-col items-center justify-center -mt-4 py-1">
+<button aria-label="JAGO Assistant" class="w-12 h-12 rounded-full bg-[#0b2046] flex items-center justify-center shadow-lg shadow-blue-950/20 active:scale-95 transition-transform" type="button">
+<!-- Stylized Lotus / Sprout JAGO icon -->
+<svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="7" r="1.8"></circle>
+<path d="M12 9.5c-2.5 3-4 5.5-4 7.5 0 2.2 1.8 4 4 4s4-1.8 4-4c0-2-1.5-4.5-4-7.5z"></path>
+<path d="M7.5 12c-1.8 1.5-2.5 3-2.5 4.5 0 1.5 1 2.5 2.5 2.5.8 0 1.8-.8 2.5-2-1-1.5-2-3.5-2.5-5z" opacity="0.8"></path>
+<path d="M16.5 12c1.8 1.5 2.5 3 2.5 4.5 0 1.5-1 2.5-2.5 2.5-.8 0-1.8-.8-2.5-2 1-1.5 2-3.5 2.5-5z" opacity="0.8"></path>
+</svg>
+</button>
+<span class="text-[10.5px] font-medium text-slate-700 mt-1">JAGO</span>
+</div>
+<!-- Tab 4: Documents -->
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-700 py-1 transition-colors" href="#">
+<svg class="w-6 h-6 stroke-[1.8] stroke-current fill-none" viewBox="0 0 24 24">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="8" x2="16" y1="13" y2="13"></line>
+<line x1="8" x2="14" y1="17" y2="17"></line>
+</svg>
+<span class="text-[10.5px] font-normal mt-1">Documents</span>
+</a>
+<!-- Tab 5: Profile -->
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-700 py-1 transition-colors" href="#">
+<svg class="w-6 h-6 stroke-[1.8] stroke-current fill-none" viewBox="0 0 24 24">
+<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+<span class="text-[10.5px] font-normal mt-1">Profile</span>
+</a>
+</div>
+<!-- BEGIN: iOS Bottom Home Bar Indicator -->
+<div class="w-full flex justify-center pb-2 pt-1" data-purpose="home-indicator">
+<div class="w-36 h-1 bg-slate-900/80 rounded-full"></div>
+</div>
+<!-- END: iOS Bottom Home Bar Indicator -->
+</nav>
+<!-- END: Persistent Bottom Navigation Bar -->
+</div>
+<!-- END: Phone Frame Device Wrapper -->
+</body></html>

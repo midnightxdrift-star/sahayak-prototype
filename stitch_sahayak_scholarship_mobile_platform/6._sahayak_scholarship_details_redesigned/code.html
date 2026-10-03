@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Scholarship Details</title>
+<!-- Tailwind CSS v3 CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              800: '#144136',
+              900: '#0F382E',
+            },
+            tealbrand: {
+              50: '#F0F9F6',
+              500: '#157358',
+              600: '#115E48',
+            },
+            navytext: '#0C2038',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="app-shell-and-scrollbar">
+    /* Hide scrollbars while maintaining full scroll functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-slate-100 flex justify-center items-center min-h-screen p-0 sm:p-4 text-slate-800 antialiased font-sans">
+<!-- BEGIN: Phone Mockup Frame -->
+<div class="w-full max-w-[400px] h-[860px] max-h-[96vh] bg-white rounded-[44px] shadow-2xl flex flex-col relative overflow-hidden border-[7px] border-slate-900 select-none">
+<!-- BEGIN: iOS Status Bar -->
+<header class="w-full px-7 pt-3 pb-2 flex justify-between items-center text-xs font-semibold tracking-tight text-slate-900 shrink-0 z-20" data-purpose="ios-status-bar">
+<span>9:41</span>
+<!-- Dynamic Island / Speaker Notch Indicator -->
+<div class="w-20 h-4 bg-transparent rounded-full mx-auto"></div>
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-3 fill-current" viewBox="0 0 16 12">
+<rect height="4" rx="0.5" width="2.5" x="0" y="8"></rect>
+<rect height="6.5" rx="0.5" width="2.5" x="4.5" y="5.5"></rect>
+<rect height="9" rx="0.5" width="2.5" x="9" y="3"></rect>
+<rect height="11.5" rx="0.5" width="2.5" x="13.5" y="0.5"></rect>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-3.5 h-3 fill-current" viewBox="0 0 16 12">
+<path d="M8 2.8C5.2 2.8 2.7 3.9 0.9 5.8L0 4.8C2.1 2.7 5 1.4 8 1.4c3 0 5.9 1.3 8 3.4l-0.9 1C13.3 3.9 10.8 2.8 8 2.8zm0 3.7c-1.9 0-3.6 0.8-4.8 2.1L2.3 7.6C3.8 6.1 5.8 5.1 8 5.1c2.2 0 4.2 1 5.7 2.5l-0.9 1C11.6 7.3 9.9 6.5 8 6.5zm0 3.8c-1 0-1.9 0.4-2.6 1.1L8 14.1l2.6-2.7C9.9 10.7 9 10.3 8 10.3z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-5 h-2.5 border border-current rounded-sm p-0.5 flex items-center">
+<div class="h-full w-full bg-current rounded-2xs"></div>
+</div>
+<div class="w-0.5 h-1 bg-current rounded-r-xs -ml-px"></div>
+</div>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- BEGIN: Top Navigation Bar -->
+<nav class="px-5 pt-1 pb-1 flex justify-between items-center z-10 shrink-0" data-purpose="top-navigation">
+<button aria-label="Go Back" class="text-navytext hover:opacity-75 transition-opacity p-1 -ml-1" type="button">
+<svg class="w-6 h-6 stroke-[2.2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button aria-label="Bookmark scholarship" class="text-navytext hover:opacity-75 transition-opacity p-1 -mr-1" type="button">
+<svg class="w-5 h-5 stroke-[2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</nav>
+<!-- END: Top Navigation Bar -->
+<!-- BEGIN: Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto px-5 pb-6 no-scrollbar" data-purpose="main-content">
+<!-- BEGIN: Header Title & Illustration Section -->
+<section class="relative pt-1 pb-2 flex items-start justify-between min-h-[96px]" data-purpose="header-intro"><div class="flex-1 pr-3 z-10">
+<div class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-[#144738] text-[11px] font-semibold mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-[#187558]"></span>
+<span>Open for 2026–27</span>
+</div>
+<h1 class="text-[22px] font-bold leading-tight text-navytext tracking-tight">
+Post-Matric Scholarship
+</h1>
+<p class="text-[13px] text-slate-500 font-normal mt-1 leading-snug">
+For students continuing education after Class X.
+</p>
+</div>
+<div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-slate-200/90 flex items-center justify-center text-[#144738] shrink-0 mt-1 shadow-xs">
+<svg class="w-6 h-6 stroke-[1.8] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-5.25 6.557c0 1.657 1.343 3 3 3h4.5c1.657 0 3-1.343 3-3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div></section>
+<!-- END: Header Title & Illustration Section -->
+<!-- BEGIN: Three Key Information Cards -->
+<section class="grid grid-cols-3 gap-2.5 mt-3" data-purpose="three-info-cards">
+<!-- Card 1: Who is it for? -->
+<article class="bg-white border border-slate-200/90 rounded-2xl p-2.5 flex flex-col items-center text-center shadow-xs">
+<div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.999-3.199a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-[11px] font-bold text-navytext leading-tight mb-1">Who is it for?</h2>
+<p class="text-[9.5px] text-slate-500 leading-tight">
+            ST students pursuing Class XI and above.
+          </p>
+</article>
+<!-- Card 2: What you may need? -->
+<article class="bg-white border border-slate-200/90 rounded-2xl p-2.5 flex flex-col items-center text-center shadow-xs">
+<div class="w-8 h-8 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center mb-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-[11px] font-bold text-navytext leading-tight mb-1">What you may need?</h2>
+<p class="text-[9.5px] text-slate-500 leading-tight">
+            Certificates, academic records and bank details.
+          </p>
+</article>
+<!-- Card 3: Application period -->
+<article class="bg-white border border-slate-200/90 rounded-2xl p-2.5 flex flex-col items-center text-center shadow-xs">
+<div class="w-8 h-8 rounded-full bg-cyan-50 text-teal-600 flex items-center justify-center mb-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-[11px] font-bold text-navytext leading-tight mb-1">Application period</h2>
+<p class="text-[9.5px] text-slate-500 leading-tight">
+            1 July 2026 –<br>30 September 2026
+          </p>
+</article>
+</section>
+<!-- END: Three Key Information Cards -->
+<!-- BEGIN: Eligibility Checklist Section -->
+<section class="mt-5" data-purpose="eligibility-checklist">
+<h2 class="text-sm font-bold text-navytext tracking-tight mb-2.5">
+          Eligibility checklist
+        </h2>
+<div class="space-y-2.5 pl-0.5">
+<!-- Item 1: ST certificate (checked) -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-[#187558] text-white flex items-center justify-center shrink-0">
+<svg class="w-3 h-3 stroke-[2.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>ST certificate</span>
+</div>
+<!-- Item 2: Income requirement (checked) -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-[#187558] text-white flex items-center justify-center shrink-0">
+<svg class="w-3 h-3 stroke-[2.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>Income requirement</span>
+</div>
+<!-- Item 3: Academic requirement (checked) -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-[#187558] text-white flex items-center justify-center shrink-0">
+<svg class="w-3 h-3 stroke-[2.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>Academic requirement</span>
+</div>
+<!-- Item 4: Bank details (unchecked circle) -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full border-2 border-slate-300 shrink-0 bg-transparent"></div>
+<span>Bank details</span>
+</div>
+</div>
+</section>
+<!-- END: Eligibility Checklist Section -->
+<!-- BEGIN: Documents Required Section -->
+<section class="mt-5" data-purpose="documents-required">
+<h2 class="text-sm font-bold text-navytext tracking-tight mb-2.5">
+          Documents required
+        </h2>
+<div class="space-y-2.5 pl-0.5">
+<!-- Document 1: Aadhaar card -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="text-[#3b82f6] shrink-0">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 9h3.75m-3.75 3h3.75m-6.75-9H6a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 006 21.75h12A2.25 2.25 0 0020.25 19.5V8.25A2.25 2.25 0 0018 6h-2.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>Aadhaar card</span>
+</div>
+<!-- Document 2: ST certificate -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="text-[#3b82f6] shrink-0">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 9h3.75m-3.75 3h3.75m-6.75-9H6a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 006 21.75h12A2.25 2.25 0 0020.25 19.5V8.25A2.25 2.25 0 0018 6h-2.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>ST certificate</span>
+</div>
+<!-- Document 3: Income certificate -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="text-[#3b82f6] shrink-0">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 9h3.75m-3.75 3h3.75m-6.75-9H6a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 006 21.75h12A2.25 2.25 0 0020.25 19.5V8.25A2.25 2.25 0 0018 6h-2.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>Income certificate</span>
+</div>
+<!-- Document 4: Marksheet -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="text-[#3b82f6] shrink-0">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 9h3.75m-3.75 3h3.75m-6.75-9H6a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 006 21.75h12A2.25 2.25 0 0020.25 19.5V8.25A2.25 2.25 0 0018 6h-2.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>Marksheet</span>
+</div>
+<!-- Document 5: Bank details -->
+<div class="flex items-center space-x-3 text-[13px] font-medium text-slate-800">
+<div class="text-[#3b82f6] shrink-0">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 9h3.75m-3.75 3h3.75m-6.75-9H6a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 006 21.75h12A2.25 2.25 0 0020.25 19.5V8.25A2.25 2.25 0 0018 6h-2.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>Bank details</span>
+</div>
+</div>
+</section>
+<!-- END: Documents Required Section -->
+<!-- BEGIN: CTA Action Buttons -->
+<section class="mt-6 flex flex-col space-y-2.5 pb-2" data-purpose="cta-buttons">
+<!-- Start Application Primary Button -->
+<button class="w-full bg-[#144738] hover:bg-[#0f382c] active:scale-[0.99] transition-all text-white text-[14px] font-semibold py-3.5 px-4 rounded-xl flex items-center justify-center space-x-2 shadow-sm" type="button">
+<span>Start application</span>
+<svg class="w-4 h-4 stroke-[2.2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Ask JAGO Secondary Button -->
+<button class="w-full bg-white hover:bg-slate-50 border border-slate-200/90 active:scale-[0.99] transition-all text-slate-800 text-[13px] font-medium py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2" type="button">
+<!-- Chat / Bot Icon -->
+<svg class="w-4 h-4 text-[#144738] stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a.75.75 0 01-.87-.87 5.968 5.968 0 011.057-2.035C4.03 16.556 3 14.414 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Ask JAGO</span>
+</button>
+</section>
+<!-- END: CTA Action Buttons -->
+</main>
+<!-- END: Main Scrollable Content -->
+<!-- BEGIN: Bottom Tab Navigation Bar -->
+<footer class="w-full bg-white border-t border-slate-100 px-4 pt-1.5 pb-2 shrink-0 z-20 relative" data-purpose="bottom-tab-bar">
+<div class="flex justify-between items-end relative">
+<!-- Tab 1: Home -->
+<button class="flex-1 flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-colors py-1" type="button">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Home</span>
+</button>
+<!-- Tab 2: Scholarships (ACTIVE) -->
+<button class="flex-1 flex flex-col items-center justify-center text-[#187558] py-1" type="button">
+<svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M6.429 9.75L2.25 12l9.75 5.25 9.75-5.25-4.179-2.25m-11.321 0L12 6.75l5.571 3m-11.142 0L12 12.75l5.571-3m-11.142 0v6.75l5.571 3 5.571-3v-6.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] mt-1 font-bold">Scholarships</span>
+</button>
+<!-- Tab 3: JAGO (Centered Floating Circular Button) -->
+<div class="flex-1 flex flex-col items-center justify-center relative -top-3">
+<button aria-label="JAGO AI Assistant" class="w-12 h-12 rounded-full bg-[#0E2841] text-white shadow-md flex items-center justify-center ring-4 ring-white active:scale-95 transition-transform" type="button">
+<!-- JAGO leaf/sprout stylized emblem -->
+<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+<!-- Center stem/stalk -->
+<circle cx="12" cy="7" fill="#FBBF24" r="1.5"></circle>
+<path d="M12 9v9" stroke="#FBBF24" stroke-linecap="round" stroke-width="2"></path>
+<!-- Left petal -->
+<path d="M12 12c-3.5 0-5-2.5-5-5 2.5 0 5 1.5 5 5z" fill="#34D399"></path>
+<!-- Right petal -->
+<path d="M12 12c3.5 0 5-2.5 5-5-2.5 0-5 1.5-5 5z" fill="#34D399"></path>
+</svg>
+</button>
+<span class="text-[10px] font-semibold text-slate-700 mt-0.5">JAGO</span>
+</div>
+<!-- Tab 4: Documents -->
+<button class="flex-1 flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-colors py-1" type="button">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Documents</span>
+</button>
+<!-- Tab 5: Profile -->
+<button class="flex-1 flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-colors py-1" type="button">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Profile</span>
+</button>
+</div>
+<!-- iOS Home Bar Indicator -->
+<div class="w-32 h-1 bg-slate-900 rounded-full mx-auto mt-2.5 mb-0.5" data-purpose="ios-home-indicator"></div>
+</footer>
+<!-- END: Bottom Tab Navigation Bar -->
+</div>
+<!-- END: Phone Mockup Frame -->
+</body></html>

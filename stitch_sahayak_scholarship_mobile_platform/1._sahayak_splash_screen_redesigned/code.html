@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sahayak - Splash Screen</title>
+<!-- Tailwind CSS CDN with forms & container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sahayak: {
+              cream: '#f9f8f3',
+              darkGreen: '#1b4332',
+              forest: '#2d6a4f',
+              accentOrange: '#f77f00',
+              badgeBg: '#f2f6f4',
+              softGray: '#e2e8f0',
+              tagline: '#2d4a3e'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            serif: ['Georgia', 'Cambria', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+<!-- Custom Styling -->
+<style data-purpose="custom-styles">
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&display=swap');
+
+    .tagline-font {
+      font-family: 'Caveat', cursive, Georgia, serif;
+    }
+
+    /* Subtle mobile container frame shadow for mock presentation */
+    .mobile-frame {
+      box-shadow: 0 25px 50px -12px rgba(27, 67, 50, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" data-snapdom="injected-import"></head>
+<body class="bg-stone-200 min-h-screen flex items-center justify-center p-0 sm:p-4 select-none antialiased">
+<!-- BEGIN: MobileContainer -->
+<!-- iPhone 14 / standard iOS mobile screen container (390px x 844px) -->
+<main class="mobile-frame w-[390px] h-[844px] bg-[#faf8ff] rounded-[48px] overflow-hidden flex flex-col justify-between relative shadow-2xl border-[6px] border-white"><header class="pt-3 px-8 flex justify-between items-center z-30" data-purpose="ios-status-bar"><span class="text-sm font-semibold text-stone-800 tracking-tight">9:41</span><div class="flex items-center space-x-1.5 text-stone-800"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25A10.97 10.97 0 0 1 1 12C1 5.92 5.92 1 12 1s11 4.92 11 11c0 2.37-.75 4.57-2.02 6.37l-.62-.64C21.39 16.2 22 14.18 22 12c0-4.97-4.03-9-9-9z" opacity="0.3"></path><rect fill="currentColor" height="5" rx="1" width="3" x="2" y="16"></rect><rect fill="currentColor" height="8" rx="1" width="3" x="7" y="13"></rect><rect fill="currentColor" height="11" rx="1" width="3" x="12" y="10"></rect><rect fill="currentColor" height="15" rx="1" width="3" x="17" y="6"></rect></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.32c3.78 0 7.21 1.5 9.77 3.96L12 18.9 2.23 11.28C4.79 8.82 8.22 7.32 12 7.32z"></path></svg><div class="w-6 h-3 border border-stone-800 rounded-sm p-0.5 flex items-center"><div class="h-full w-full bg-stone-800 rounded-2xs"></div></div></div></header><section class="pt-8 px-6 flex-1 flex flex-col items-center justify-between text-center z-20 pb-4" data-purpose="branding-content"><div class="flex flex-col items-center"><div class="mb-3 relative" data-purpose="brand-logo"><svg class="w-16 h-16 drop-shadow-sm" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="18" fill="#f77f00" r="5"></circle><path d="M30 38C22 38 18 30 18 22C26 22 30 28 30 38Z" fill="#1b4332"></path><path d="M34 38C42 38 46 30 46 22C38 22 34 28 34 38Z" fill="#2d6a4f"></path></svg></div><h1 class="text-3xl font-extrabold text-[#11382b] tracking-tight mb-1 font-sans">Sahayak</h1><p class="text-xs font-semibold tracking-wide text-stone-600 mb-8">Your Unified Scholarship Platform</p><div class="flex items-center justify-center gap-4 w-full px-2" data-purpose="feature-indicators"><div class="flex flex-col items-center space-y-1.5 flex-1"><div class="w-12 h-12 rounded-xl bg-white border border-[#e1eae5] flex items-center justify-center shadow-xs"><svg class="w-5 h-5 text-[#2d6a4f]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><span class="text-[11px] font-medium text-stone-700">Support</span></div><div class="flex flex-col items-center space-y-1.5 flex-1"><div class="w-12 h-12 rounded-xl bg-white border border-[#e1eae5] flex items-center justify-center shadow-xs"><svg class="w-5 h-5 text-[#2d6a4f]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><span class="text-[11px] font-medium text-stone-700">Apply</span></div><div class="flex flex-col items-center space-y-1.5 flex-1"><div class="w-12 h-12 rounded-xl bg-white border border-[#e1eae5] flex items-center justify-center shadow-xs"><svg class="w-5 h-5 text-[#2d6a4f]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><span class="text-[11px] font-medium text-stone-700">Track</span></div><div class="flex flex-col items-center space-y-1.5 flex-1"><div class="w-12 h-12 rounded-xl bg-white border border-[#e1eae5] flex items-center justify-center shadow-xs"><svg class="w-5 h-5 text-[#2d6a4f]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><span class="text-[11px] font-medium text-stone-700">Grow</span></div></div></div><div class="my-auto text-center py-10" data-purpose="tagline-container"><p class="tagline-font text-2xl text-[#1e4d3a] tracking-wide leading-tight">Education today,<br>stronger tomorrows</p><div class="flex justify-center mt-2"><svg class="w-28 h-2 text-[#f77f00]" fill="none" viewBox="0 0 100 8"><path d="M1 7C30 1 70 1 99 7" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path></svg></div></div></section><footer class="w-full pb-8 pt-4 flex flex-col items-center justify-center bg-transparent z-20" data-purpose="carousel-footer"><div class="flex items-center space-x-2" data-purpose="pagination-dots"><span class="w-12 h-1.5 bg-[#1b4332] rounded-full transition-all duration-300"></span><span class="w-16 h-1.5 bg-[#dbe4df] rounded-full"></span></div><div class="w-32 h-1 bg-stone-300 rounded-full mt-4" data-purpose="ios-home-indicator"></div></footer></main>
+<!-- END: MobileContainer -->
+</body></html>

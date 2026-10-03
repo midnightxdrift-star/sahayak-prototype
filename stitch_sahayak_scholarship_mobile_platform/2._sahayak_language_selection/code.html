@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Sahayak - Choose Language</title>
+<!-- Tailwind CSS v3 with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0b1c3d',
+              forest: '#114a3b',
+              forestHover: '#0d3b2f',
+              mint: '#eaf4ee',
+              subtext: '#64748b'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="app-shell">
+    /* Prevent bouncy mobile elastic scrolling for app feel */
+    body {
+      background-color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-frame {
+      width: 100%;
+      max-width: 412px;
+      height: 870px;
+      max-height: 100vh;
+      background: #fbfdfc;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (min-width: 640px) {
+      .mobile-frame {
+        border-radius: 40px;
+        border: 8px solid #1a202c;
+      }
+    }
+  </style>
+<style data-purpose="illustrations">
+    /* Subtle decorative foliage and hill backgrounds */
+    .bg-hills {
+      background: linear-gradient(180deg, rgba(251, 253, 252, 0) 0%, rgba(220, 240, 228, 0.5) 45%, rgba(182, 222, 197, 0.8) 100%);
+    }
+
+    .card-shadow {
+      box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.04), 0 1px 4px -1px rgba(0, 0, 0, 0.02);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body>
+<!-- BEGIN: MobileContainer -->
+<main class="mobile-frame" data-purpose="mobile-viewport">
+<!-- BEGIN: DecorativeBackgroundHills -->
+<!-- Soft rolling hills backdrop at the bottom layer -->
+<div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-64 pointer-events-none z-0 overflow-hidden">
+<svg class="absolute bottom-0 w-[120%] -left-[10%] h-48 opacity-40 text-emerald-200" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 500 150">
+<path d="M-10.44,75.45 C149.99,150.00 271.49,-49.98 520.55,80.45 L500.00,150.00 L-10.44,150.00 Z"></path>
+</svg>
+<svg class="absolute bottom-0 w-[140%] -left-[20%] h-36 opacity-60 text-emerald-300" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 500 150">
+<path d="M0.00,49.98 C150.00,150.00 349.81,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"></path>
+</svg>
+<svg class="absolute bottom-0 w-full h-24 opacity-75 text-emerald-400/40" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 500 150">
+<path d="M0.00,70.00 C180.00,130.00 320.00,20.00 500.00,70.00 L500.00,150.00 L0.00,150.00 Z"></path>
+</svg>
+</div>
+<!-- END: DecorativeBackgroundHills -->
+<!-- BEGIN: TopBarSection -->
+<header class="relative z-10 pt-3 px-6 pb-2 select-none" data-purpose="status-and-navigation">
+<!-- iOS Status Bar -->
+<div class="flex justify-between items-center text-sm font-semibold text-gray-800 tracking-tight h-6 mb-2">
+<span>9:41</span>
+<div class="flex items-center space-x-2">
+<!-- Signal Icon -->
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25C2.9 16.48 2 14.34 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10c0 2.34-.9 4.48-2.35 6.25l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 4c-2.76 0-5 2.24-5 5 0 1.25.46 2.39 1.22 3.28l.71-.71C8.36 13.9 8 13 8 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1-.36 1.9-.93 2.57l.71.71c.76-.89 1.22-2.03 1.22-3.28 0-2.76-2.24-5-5-5zm0 4c-.55 0-1 .45-1 1 0 .28.11.53.29.71l.71.71.71-.71c.18-.18.29-.43.29-.71 0-.55-.45-1-1-1z"></path>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.52 0 6.74 1.34 9.16 3.54L12 19.34 2.84 11.04C5.26 8.84 8.48 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-6 h-3 border border-gray-800 rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-4 bg-gray-800 rounded-[1px]"></div>
+</div>
+</div>
+</div>
+<!-- Navigation & Leaf Accent -->
+<div class="flex items-center justify-between mt-2">
+<!-- Back Arrow Button -->
+<button aria-label="Go back" class="p-1 -ml-1 text-brand-navy hover:text-gray-600 transition-colors" type="button">
+<svg class="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Decorative Leaf Illustration (Top Right) -->
+<div aria-hidden="true" class="pointer-events-none">
+<svg class="w-12 h-12 text-emerald-600" fill="currentColor" viewBox="0 0 64 64">
+<path d="M52 8c-12 1-22 8-26 18-3 8-1 18 6 24 8 6 20 4 28-2 6-5 9-14 8-24-5-8-10-14-16-16zm-5 24c-4 5-11 6-16 2-4-4-5-10-2-15 3-5 9-8 15-9 1 7 0 16 3 22z" opacity="0.85"></path>
+<path d="M38 34c-6 3-10 8-12 14-1 4 0 9 3 12 4 3 10 2 14-1 3-3 4-7 4-12-3-5-6-9-9-13z" opacity="0.6"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: TopBarSection -->
+<!-- BEGIN: HeaderTitles -->
+<section class="relative z-10 px-6 pt-1 pb-4" data-purpose="heading-section">
+<h1 class="text-[28px] leading-tight font-extrabold text-brand-navy tracking-tight">
+        Choose your language
+      </h1>
+<p class="text-lg font-medium text-slate-500 mt-1">
+        अपनी भाषा चुनें
+      </p>
+</section>
+<!-- END: HeaderTitles -->
+<!-- BEGIN: LanguageListSection -->
+<section class="relative z-10 flex-1 px-6 space-y-3 overflow-y-auto no-scrollbar pb-6" data-purpose="language-options">
+<!-- Option 1: Hindi (Checked State) -->
+<label class="flex items-center justify-between min-h-[66px] px-4 py-3 bg-white rounded-2xl border-2 border-emerald-700/80 card-shadow cursor-pointer transition-all hover:bg-emerald-50/20 active:scale-[0.99]" data-purpose="language-item">
+<input checked="" class="sr-only" name="selected_language" type="radio" value="hi">
+<div class="flex items-center space-x-4">
+<!-- Icon box: soft orange/peach -->
+<div class="w-12 h-12 rounded-xl bg-[#faeae1] flex items-center justify-center text-[#d96534] font-bold text-2xl select-none">
+            अ
+          </div>
+<div>
+<div class="text-[17px] font-bold text-gray-900 leading-tight">हिन्दी</div>
+<div class="text-[14px] font-normal text-slate-500">Hindi</div>
+</div>
+</div>
+<!-- Active Checkmark Circle -->
+<div class="w-6 h-6 rounded-full bg-brand-forest flex items-center justify-center text-white shadow-sm">
+<svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</label>
+<!-- Option 2: English -->
+<label class="flex items-center justify-between min-h-[66px] px-4 py-3 bg-white rounded-2xl border border-gray-100 card-shadow cursor-pointer transition-all hover:bg-slate-50 active:scale-[0.99]" data-purpose="language-item">
+<input class="sr-only" name="selected_language" type="radio" value="en">
+<div class="flex items-center space-x-4">
+<!-- Icon box: soft blue -->
+<div class="w-12 h-12 rounded-xl bg-[#e3eefc] flex items-center justify-center text-[#2563eb] font-bold text-2xl select-none">
+            A
+          </div>
+<div>
+<div class="text-[17px] font-bold text-gray-900 leading-tight">English</div>
+<div class="text-[14px] font-normal text-slate-500">English</div>
+</div>
+</div>
+<!-- Radio Circle -->
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 bg-white"></div>
+</label>
+<!-- Option 3: Marathi -->
+<label class="flex items-center justify-between min-h-[66px] px-4 py-3 bg-white rounded-2xl border border-gray-100 card-shadow cursor-pointer transition-all hover:bg-slate-50 active:scale-[0.99]" data-purpose="language-item">
+<input class="sr-only" name="selected_language" type="radio" value="mr">
+<div class="flex items-center space-x-4">
+<!-- Icon box: soft orange/amber -->
+<div class="w-12 h-12 rounded-xl bg-[#faede6] flex items-center justify-center text-[#ea580c] font-bold text-2xl select-none">
+            म
+          </div>
+<div>
+<div class="text-[17px] font-bold text-gray-900 leading-tight">मराठी</div>
+<div class="text-[14px] font-normal text-slate-500">Marathi</div>
+</div>
+</div>
+<!-- Radio Circle -->
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 bg-white"></div>
+</label>
+<!-- Option 4: Telugu -->
+<label class="flex items-center justify-between min-h-[66px] px-4 py-3 bg-white rounded-2xl border border-gray-100 card-shadow cursor-pointer transition-all hover:bg-slate-50 active:scale-[0.99]" data-purpose="language-item">
+<input class="sr-only" name="selected_language" type="radio" value="te">
+<div class="flex items-center space-x-4">
+<!-- Icon box: soft green -->
+<div class="w-12 h-12 rounded-xl bg-[#e6f4ea] flex items-center justify-center text-[#16a34a] font-bold text-2xl select-none">
+            తె
+          </div>
+<div>
+<div class="text-[17px] font-bold text-gray-900 leading-tight">తెలుగు</div>
+<div class="text-[14px] font-normal text-slate-500">Telugu</div>
+</div>
+</div>
+<!-- Radio Circle -->
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 bg-white"></div>
+</label>
+<!-- Option 5: Odia -->
+<label class="flex items-center justify-between min-h-[66px] px-4 py-3 bg-white rounded-2xl border border-gray-100 card-shadow cursor-pointer transition-all hover:bg-slate-50 active:scale-[0.99]" data-purpose="language-item">
+<input class="sr-only" name="selected_language" type="radio" value="or">
+<div class="flex items-center space-x-4">
+<!-- Icon box: soft purple/indigo -->
+<div class="w-12 h-12 rounded-xl bg-[#ede9fe] flex items-center justify-center text-[#6366f1] font-bold text-2xl select-none">
+            ଓ
+          </div>
+<div>
+<div class="text-[17px] font-bold text-gray-900 leading-tight">ଓଡ଼ିଆ</div>
+<div class="text-[14px] font-normal text-slate-500">Odia</div>
+</div>
+</div>
+<!-- Radio Circle -->
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 bg-white"></div>
+</label>
+<!-- Option 6: More languages -->
+<label class="flex items-center justify-between min-h-[66px] px-4 py-3 bg-white rounded-2xl border border-gray-100 card-shadow cursor-pointer transition-all hover:bg-slate-50 active:scale-[0.99]" data-purpose="language-item">
+<input class="sr-only" name="selected_language" type="radio" value="more">
+<div class="flex items-center space-x-4">
+<!-- Icon box: soft neutral with globe -->
+<div class="w-12 h-12 rounded-xl bg-[#eef2f6] flex items-center justify-center text-[#334155] select-none">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="2" x2="22" y1="12" y2="12"></line>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+</div>
+<div>
+<div class="text-[17px] font-bold text-gray-900 leading-tight">More languages</div>
+</div>
+</div>
+<!-- Radio Circle -->
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 bg-white"></div>
+</label>
+</section>
+<!-- END: LanguageListSection -->
+<!-- BEGIN: FooterActionSection -->
+<footer class="relative z-10 p-6 pt-2 pb-8 bg-transparent" data-purpose="action-button-container">
+<button class="w-full h-14 bg-brand-forest hover:bg-brand-forestHover active:scale-[0.99] text-white font-semibold text-lg rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950/20 transition-all focus:outline-none focus:ring-4 focus:ring-emerald-700/30" id="continue-button" type="button">
+<span>Continue</span>
+<span class="text-xl">→</span>
+</button>
+</footer>
+<!-- END: FooterActionSection -->
+</main>
+<!-- END: MobileContainer -->
+<!-- BEGIN: InteractiveScript -->
+<script data-purpose="radio-selection-handler">
+    document.addEventListener('DOMContentLoaded', () => {
+      const languageLabels = document.querySelectorAll('[data-purpose="language-item"]');
+      
+      languageLabels.forEach(label => {
+        label.addEventListener('click', () => {
+          // Reset all labels to unselected state
+          languageLabels.forEach(item => {
+            item.classList.remove('border-2', 'border-emerald-700/80');
+            item.classList.add('border', 'border-gray-100');
+            
+            // Swap checkmark icon with unselected radio circle
+            const indicatorContainer = item.lastElementChild;
+            indicatorContainer.className = 'w-6 h-6 rounded-full border-2 border-slate-300 bg-white';
+            indicatorContainer.innerHTML = '';
+          });
+
+          // Apply selected state to current label
+          label.classList.remove('border', 'border-gray-100');
+          label.classList.add('border-2', 'border-emerald-700/80');
+
+          const activeIndicator = label.lastElementChild;
+          activeIndicator.className = 'w-6 h-6 rounded-full bg-brand-forest flex items-center justify-center text-white shadow-sm';
+          activeIndicator.innerHTML = `
+            <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          `;
+        });
+      });
+    });
+  </script>
+<!-- END: InteractiveScript -->
+</body></html>
