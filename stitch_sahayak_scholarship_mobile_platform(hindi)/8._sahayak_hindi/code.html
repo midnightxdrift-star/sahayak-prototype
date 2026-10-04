@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>आवेदन विवरण</title>
+<!-- Tailwind CSS CDN with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#0d2137',
+              darkGreen: '#1b5e40',
+              accentGreen: '#107c41',
+              lightMint: '#eaf8f0',
+              subtleBg: '#f6f8fa',
+              textMuted: '#627282',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars-and-reset">
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    /* Hide scrollbars for clean app viewport simulation */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 flex justify-center items-center min-h-screen font-sans antialiased text-slate-800">
+<!-- BEGIN: MobileContainer -->
+<!-- Container scaled specifically to match realistic iPhone layout (390px x 844px) -->
+<main class="w-[390px] h-[844px] bg-[#fbfcfd] shadow-2xl rounded-[44px] overflow-hidden flex flex-col relative border-[6px] border-slate-900 border-opacity-90">
+<!-- BEGIN: iOSStatusBar -->
+<header class="w-full pt-3 px-7 pb-1 flex justify-between items-center bg-[#fbfcfd] z-20 shrink-0">
+<!-- Time -->
+<span class="text-[15px] font-semibold tracking-tight text-slate-900">9:41</span>
+<!-- System Icons: Cellular, Wi-Fi, Battery -->
+<div class="flex items-center space-x-2">
+<!-- Cellular Signal -->
+<svg class="w-4 h-3.5 fill-current text-slate-900" viewbox="0 0 17 11">
+<rect height="3" rx="0.5" width="2.5" x="0" y="8"></rect>
+<rect height="5.5" rx="0.5" width="2.5" x="4.5" y="5.5"></rect>
+<rect height="8" rx="0.5" width="2.5" x="9" y="3"></rect>
+<rect height="11" rx="0.5" width="2.5" x="13.5" y="0"></rect>
+</svg>
+<!-- Wi-Fi -->
+<svg class="w-4 h-3.5 fill-current text-slate-900" viewbox="0 0 16 12">
+<path d="M8 12a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm5.07-5.93a7.17 7.17 0 00-10.14 0 .9.9 0 11-1.27-1.27 8.97 8.97 0 0112.68 0 .9.9 0 01-1.27 1.27zm2.55-2.55a10.77 10.77 0 00-15.24 0 .9.9 0 01-1.27-1.28 12.57 12.57 0 0117.78 0 .9.9 0 11-1.27 1.28z"></path>
+</svg>
+<!-- Battery with fill -->
+<div class="relative w-6 h-3 border border-slate-900 rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-4 bg-slate-900 rounded-[1.5px]"></div>
+<div class="absolute -right-1 top-1 w-0.5 h-1 bg-slate-900 rounded-r-xs"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: TopAppBar -->
+<section class="px-5 pt-1 pb-3 flex flex-col gap-3 bg-[#fbfcfd] shrink-0 border-b border-slate-100">
+<!-- Title & Action Buttons -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Back arrow -->
+<button aria-label="वापस जाएं" class="p-1 -ml-1 text-slate-800 hover:text-slate-600 transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[2.2] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Page title -->
+<h1 class="text-xl font-bold text-[#0f2439] tracking-tight">आवेदन विवरण</h1>
+</div>
+<!-- More options icon (vertical 3-dots) -->
+<button aria-label="अधिक विकल्प" class="p-1 text-slate-700 hover:text-slate-900" type="button">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<circle cx="12" cy="5" r="1.75"></circle>
+<circle cx="12" cy="12" r="1.75"></circle>
+<circle cx="12" cy="19" r="1.75"></circle>
+</svg>
+</button>
+</div>
+<!-- Segmented Tab Bar -->
+<nav aria-label="आवेदन टैब" class="flex items-center gap-2 pt-0.5">
+<!-- Active Tab: Overview -->
+<button class="px-4 py-1.5 bg-[#1b5e40] text-white text-[13px] font-semibold rounded-full shadow-sm hover:opacity-95 transition-all">
+          विवरण
+        </button>
+<!-- Inactive Tab: Verification -->
+<button class="px-4 py-1.5 bg-slate-100/90 text-slate-600 text-[13px] font-medium rounded-full hover:bg-slate-200 transition-colors">
+          सत्यापन
+        </button>
+<!-- Inactive Tab: Documents -->
+<button class="px-4 py-1.5 bg-slate-100/90 text-slate-600 text-[13px] font-medium rounded-full hover:bg-slate-200 transition-colors">
+          दस्तावेज़
+        </button>
+</nav>
+</section>
+<!-- END: TopAppBar -->
+<!-- BEGIN: MainContentScrollArea -->
+<div class="flex-1 overflow-y-auto px-4 py-3 space-y-3.5 pb-20">
+<!-- BEGIN: StudentDetailsSection -->
+<section aria-labelledby="heading-student-details" class="bg-white rounded-2xl p-4 border border-slate-100/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)]">
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-3.5">
+<h2 class="text-[15px] font-bold text-[#0d2137]" id="heading-student-details">विद्यार्थी विवरण</h2>
+<button class="flex items-center gap-1 text-[13px] font-medium text-[#1b5e40] hover:underline" type="button">
+<!-- Edit Pencil Icon -->
+<svg class="w-3.5 h-3.5 stroke-[2] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>संशोधन करें</span>
+</button>
+</div>
+<!-- Student Items -->
+<div class="space-y-3">
+<!-- User / Student ID -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f0f4f8] flex items-center justify-center shrink-0 text-[#2563eb]">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-[14px] font-bold text-[#0d2137]">रमेश कुमार</span>
+<span class="text-[12px] text-slate-500 font-medium">ST202600124</span>
+</div>
+</div>
+<!-- Academic Stream -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f0f4f8] flex items-center justify-center shrink-0 text-[#2563eb]">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-5.25 6.557q.271.218.552.42" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-semibold text-[#1e40af]">बी.टेक कंप्यूटर साइंस</span>
+</div>
+<!-- College -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f0f4f8] flex items-center justify-center shrink-0 text-[#2563eb]">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.333A48.42 48.42 0 0012 9.75c-2.551 0-5.056.2-7.5.583V21m16.5 0H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-semibold text-[#1e40af]">एबीसी कॉलेज ऑफ टेक्नोलॉजी</span>
+</div>
+<!-- Location -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f0f4f8] flex items-center justify-center shrink-0 text-[#2563eb]">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-medium text-slate-700">मध्य प्रदेश</span>
+</div>
+</div>
+</section>
+<!-- END: StudentDetailsSection -->
+<!-- BEGIN: ScholarshipDetailsSection -->
+<section aria-labelledby="heading-scholarship-details" class="bg-white rounded-2xl p-4 border border-slate-100/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)]">
+<h2 class="text-[15px] font-bold text-[#0d2137] mb-3.5" id="heading-scholarship-details">छात्रवृत्ति विवरण</h2>
+<div class="space-y-3.5">
+<!-- Scheme Name and Application Code -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center shrink-0 text-orange-600">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-[14px] font-bold text-[#0d2137]">पोस्ट-मैट्रिक छात्रवृत्ति</span>
+<span class="text-[12px] text-slate-500 font-medium">MOTA-PMS-2026-00124</span>
+</div>
+</div>
+<!-- Applied On -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-[12px] text-slate-500 font-medium">आवेदन तिथि:</span>
+<span class="text-[13px] font-semibold text-[#0d2137]">12 जून 2026</span>
+</div>
+</div>
+<!-- Current status -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0 text-emerald-600">
+<svg class="w-4 h-4 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col items-start gap-1">
+<span class="text-[12px] text-slate-500 font-medium">वर्तमान स्थिति</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[12px] font-semibold bg-[#e6f7ec] text-[#0f763e]">
+                सत्यापन पूर्ण
+              </span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ScholarshipDetailsSection -->
+<!-- BEGIN: VerificationStatusSection -->
+<section aria-labelledby="heading-verification-status" class="bg-white rounded-2xl p-4 border border-slate-100/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)]">
+<h2 class="text-[15px] font-bold text-[#0d2137] mb-3" id="heading-verification-status">सत्यापन स्थिति</h2>
+<div class="space-y-3">
+<!-- Status Row 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-5 h-5 rounded-full bg-[#107c41] flex items-center justify-center text-white">
+<svg class="w-3.5 h-3.5 stroke-[3] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-medium text-slate-800">पहचान सत्यापन</span>
+</div>
+<span class="text-[12.5px] font-semibold text-[#107c41]">सत्यापित</span>
+</div>
+<!-- Status Row 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-5 h-5 rounded-full bg-[#107c41] flex items-center justify-center text-white">
+<svg class="w-3.5 h-3.5 stroke-[3] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-medium text-slate-800">शैक्षणिक सत्यापन</span>
+</div>
+<span class="text-[12.5px] font-semibold text-[#107c41]">सत्यापित</span>
+</div>
+<!-- Status Row 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-5 h-5 rounded-full bg-[#107c41] flex items-center justify-center text-white">
+<svg class="w-3.5 h-3.5 stroke-[3] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-medium text-slate-800">बैंक सत्यापन</span>
+</div>
+<span class="text-[12.5px] font-semibold text-[#107c41]">सत्यापित</span>
+</div>
+<!-- Status Row 4 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-5 h-5 rounded-full bg-[#107c41] flex items-center justify-center text-white">
+<svg class="w-3.5 h-3.5 stroke-[3] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-medium text-slate-800">संस्थान सत्यापन</span>
+</div>
+<span class="text-[12.5px] font-semibold text-[#107c41]">सत्यापित</span>
+</div>
+</div>
+</section>
+<!-- END: VerificationStatusSection -->
+<!-- BEGIN: NoActionNeededBanner -->
+<section class="bg-[#eaf8f0] border border-[#d2f0e0] rounded-2xl p-4 flex items-center gap-3.5 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-[#107c41] text-white flex items-center justify-center shrink-0">
+<!-- Shield Check Icon -->
+<svg class="w-4 h-4 fill-none stroke-[2.5] stroke-current" viewbox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-[14px] font-bold text-[#0d2137]">कोई कार्रवाई आवश्यक नहीं</span>
+<span class="text-[12px] text-slate-600 font-medium">आपका आवेदन सही दिशा में है।</span>
+</div>
+</section>
+<!-- END: NoActionNeededBanner -->
+</div>
+<!-- END: MainContentScrollArea -->
+<!-- BEGIN: PersistentBottomNavigationBar -->
+<nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200/70 pt-2 pb-5 px-3 z-30">
+<div class="flex items-center justify-around">
+<!-- 1. Home -->
+<a class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-800 transition-colors w-14" href="#home">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">होम</span>
+</a>
+<!-- 2. Scholarships (Active Context) -->
+<a class="flex flex-col items-center gap-1 text-[#1b5e40] w-14" href="#scholarships">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-5.25 6.557q.271.218.552.42" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-bold tracking-tight">छात्रवृत्तियां</span>
+</a>
+<!-- 3. JAGO (Circular Highlight Badge) -->
+<a class="flex flex-col items-center -mt-3.5 group" href="#jago">
+<div class="w-11 h-11 rounded-full bg-[#0d2137] text-white flex items-center justify-center shadow-md shadow-slate-900/20 group-hover:scale-105 transition-transform">
+<!-- Distinctive 3-Petal Leaf Icon -->
+<svg class="w-5 h-5 fill-amber-400 stroke-none" viewbox="0 0 24 24">
+<path d="M12 2C12 2 13 6 15 8C17 10 21 11 21 11C21 11 17 12 15 14C13 16 12 20 12 20C12 20 11 16 9 14C7 12 3 11 3 11C3 11 7 10 9 8C11 6 12 2 12 2Z"></path>
+<circle class="fill-white" cx="12" cy="11" r="2"></circle>
+</svg>
+</div>
+<span class="text-[10px] font-semibold text-slate-800 tracking-tight mt-0.5">जागो</span>
+</a>
+<!-- 4. Documents -->
+<a class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-800 transition-colors w-14" href="#documents">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">दस्तावेज़</span>
+</a>
+<!-- 5. Profile -->
+<a class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-800 transition-colors w-14" href="#profile">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">प्रोफ़ाइल</span>
+</a>
+</div>
+<!-- iOS Home Indicator -->
+<div class="w-32 h-1 bg-slate-900 rounded-full mx-auto mt-3"></div>
+</nav>
+<!-- END: PersistentBottomNavigationBar -->
+</main>
+<!-- END: MobileContainer -->
+</body></html>
