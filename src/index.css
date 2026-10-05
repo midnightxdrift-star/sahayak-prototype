@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    overscroll-behavior: none;
+  }
+}
+
+/* Custom subtle scrollbar hiding for clean native mobile app appearance */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Conic gradient for 72% circular meter on Home */
+.progress-conic {
+  background: conic-gradient(#15803d 0% 72%, #e5e7eb 72% 100%);
+}
+
+.tagline-font {
+  font-family: 'Caveat', cursive, Georgia, serif;
+}
