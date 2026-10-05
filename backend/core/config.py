@@ -58,14 +58,12 @@ class Settings:
             return "llama-3.3-70b-versatile"
         return "grok-2-latest"
     
-    # CORS Origins
-    _frontend_origins_raw: str = os.getenv(
-        "FRONTEND_ORIGIN", 
-        "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:3000"
-    )
-    
+    # CORS Origins - Defaults to * to seamlessly allow Vercel previews and production
     @property
     def CORS_ORIGINS(self) -> List[str]:
-        return [origin.strip() for origin in self._frontend_origins_raw.split(",") if origin.strip()]
+        raw = os.getenv("FRONTEND_ORIGIN", "*").strip()
+        if not raw or raw == "*" or raw.lower() == "all":
+            return ["*"]
+        return [origin.strip() for origin in raw.split(",") if origin.strip()]
 
 settings = Settings()
