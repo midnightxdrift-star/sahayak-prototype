@@ -189,8 +189,9 @@ export default function JagoChatbot({ applicationId = 'MOTA-PMS-2026-00124', sch
       });
 
       const replyText =
-        response.response ||
+        response.data?.reply ||
         response.reply ||
+        response.response ||
         (language === 'hi'
           ? 'मुझे खेद है, सर्वर से उत्तर नहीं मिला। कृपया बाद में प्रयास करें।'
           : 'Sorry, I could not retrieve an answer right now. Please try again shortly.');

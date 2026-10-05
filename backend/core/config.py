@@ -16,6 +16,17 @@ class Settings:
     VERSION: str = "1.0.0"
     API_PREFIX: str = "/api"
     
+    # Custom JAGO AI Service configuration
+    @property
+    def JAGO_API_KEY(self) -> str:
+        key = os.getenv("JAGO_API_KEY", "")
+        return key.strip().strip('"').strip("'")
+
+    @property
+    def JAGO_URL(self) -> str:
+        url = os.getenv("JAGO_URL", "")
+        return url.strip().strip('"').strip("'").rstrip("/")
+
     # AI configuration (Supports Grok / xAI, OpenAI, Groq, OpenRouter)
     @property
     def GROK_API_KEY(self) -> str:

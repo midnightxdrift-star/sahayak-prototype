@@ -134,12 +134,59 @@ export const api = {
    * @param {string} params.message - Question or chip text
    * @param {string} [params.applicationId] - Current active application ID
    * @param {string} [params.scholarshipId] - Current scholarship ID if from details
+   * @param {string} [params.studentId] - Student ID
+   * @param {string} [params.sessionId] - Session ID
    */
-  async chatWithJago({ message, applicationId = 'MOTA-PMS-2026-00124', scholarshipId = null, language = 'en', history = [] }) {
-    return request('/jago/chat', {
+  async chatWithJago({ 
+    message, 
+    applicationId = 'MOTA-PMS-2026-00124', 
+    scholarshipId = null, 
+    language = 'en', 
+    history = [],
+    studentId = 'STU-2026-8841',
+    sessionId = 'sess-default'
+  }) {
+    const jagoApiKey = import.meta.env.VITE_JAGO_API_KEY || 'jago_109b5c2ef5028e6bf5317877fa9c4120ff32899e531caf5e95cefe5f96b2625d';
+    const externalJagoUrl = import.meta.env.VITE_JAGO_URL;
+
+    // 1. Direct external call if VITE_JAGO_URL is provided
+    if (externalJagoUrl) {
+      try {
+        const r = await fetch(`${externalJagoUrl}/api/v1/chat`, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json', 
+            'X-JAGO-API-KEY': jagoApiKey 
+          },
+          body: JSON.stringify({ studentId, message, sessionId })
+        });
+        if (r.ok) {
+          const res = await r.json();
+          const reply = res?.data?.reply || res?.reply || res?.response;
+          if (reply) {
+            return {
+              reply,
+              response: reply,
+              data: { reply },
+              source: 'external_jago_api'
+            };
+          }
+        }
+      } catch (err) {
+        console.warn('[JAGO] Direct external fetch failed, trying backend proxy:', err);
+      }
+    }
+
+    // 2. Call backend /api/v1/chat endpoint
+    return request('/v1/chat', {
       method: 'POST',
+      headers: {
+        'X-JAGO-API-KEY': jagoApiKey,
+      },
       body: JSON.stringify({
         message,
+        studentId,
+        sessionId,
         application_id: applicationId,
         scholarship_id: scholarshipId,
         language,
@@ -148,6 +195,9 @@ export const api = {
     }, {
       response: `Namaste Ramesh Kumar. Your application for Post-Matric Scholarship is currently in Sanction. Your pending amount of ₹5,000 for September is under verification. Please renew your expired Income Certificate in your Document Wallet to prevent any delays.`,
       reply: `Namaste Ramesh Kumar. Your application for Post-Matric Scholarship is currently in Sanction. Your pending amount of ₹5,000 for September is under verification. Please renew your expired Income Certificate in your Document Wallet to prevent any delays.`,
+      data: {
+        reply: `Namaste Ramesh Kumar. Your application for Post-Matric Scholarship is currently in Sanction. Your pending amount of ₹5,000 for September is under verification. Please renew your expired Income Certificate in your Document Wallet to prevent any delays.`,
+      },
       context_used: {
         student_name: "Ramesh Kumar",
         application_id: applicationId,

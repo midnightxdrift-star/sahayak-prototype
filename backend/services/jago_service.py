@@ -78,15 +78,37 @@ class JagoService:
         application_id: Optional[str] = None, 
         scholarship_id: Optional[str] = None,
         language: str = "en",
-        history: Optional[List[Dict[str, str]]] = None
+        history: Optional[List[Dict[str, str]]] = None,
+        student_id: Optional[str] = None,
+        session_id: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Processes student inquiry. Connects to Grok API if configured;
-        otherwise provides grounded contextual responses based on backend facts.
+        Processes student inquiry. Connects to Custom JAGO AI service if configured,
+        then Grok API if configured, otherwise provides grounded contextual responses.
         """
         context = cls.get_student_context(application_id, scholarship_id)
-        
-        # 1. Try Grok API if key is present
+        effective_student_id = student_id or context.get("student_id", "STU-2026-8841")
+        effective_session_id = session_id or f"sess-{effective_student_id}"
+
+        # 1. Try Custom JAGO API if configured
+        if settings.JAGO_API_KEY and settings.JAGO_URL:
+            try:
+                jago_reply = await cls._call_external_jago_api(
+                    message=message,
+                    student_id=effective_student_id,
+                    session_id=effective_session_id
+                )
+                if jago_reply:
+                    return {
+                        "response": jago_reply,
+                        "reply": jago_reply,
+                        "context_used": context,
+                        "source": "jago_external_api"
+                    }
+            except Exception as e:
+                logger.error(f"Custom JAGO API call failed: {e}. Falling back to next service.")
+
+        # 2. Try Grok API if key is present
         if settings.GROK_API_KEY and settings.GROK_API_KEY.strip():
             try:
                 grok_reply = await cls._call_grok_api(message, context, language, history)
@@ -100,7 +122,7 @@ class JagoService:
             except Exception as e:
                 logger.error(f"Grok API call failed: {e}. Falling back to grounded service.")
 
-        # 2. Grounded deterministic service fallback
+        # 3. Grounded deterministic service fallback
         fallback_reply = cls._generate_grounded_reply(message, context, language, history)
         return {
             "response": fallback_reply,
@@ -108,6 +130,36 @@ class JagoService:
             "context_used": context,
             "source": "grounded_service"
         }
+
+    @staticmethod
+    async def _call_external_jago_api(
+        message: str,
+        student_id: str = "STU-2026-8841",
+        session_id: str = "sess-default"
+    ) -> Optional[str]:
+        target_url = f"{settings.JAGO_URL}/api/v1/chat"
+        headers = {
+            "Content-Type": "application/json",
+            "X-JAGO-API-KEY": settings.JAGO_API_KEY
+        }
+        payload = {
+            "studentId": student_id,
+            "message": message,
+            "sessionId": session_id
+        }
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            resp = await client.post(target_url, json=payload, headers=headers)
+            if resp.status_code == 200:
+                data = resp.json()
+                reply = (
+                    data.get("data", {}).get("reply")
+                    if isinstance(data.get("data"), dict)
+                    else None
+                ) or data.get("reply") or data.get("response")
+                return reply
+            else:
+                logger.warning(f"External JAGO API returned status {resp.status_code}: {resp.text}")
+                return None
 
     @staticmethod
     async def _call_grok_api(
