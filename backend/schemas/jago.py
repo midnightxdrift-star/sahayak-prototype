@@ -25,6 +25,7 @@ class JagoV1ChatRequest(BaseModel):
     application_id: Optional[str] = Field(default="MOTA-PMS-2026-00124", description="Optional application ID")
     scholarship_id: Optional[str] = Field(default=None, description="Optional scholarship ID")
     language: Optional[str] = Field(default="en", description="Language preference")
+    history: Optional[List[Any]] = Field(default_factory=list, description="Recent conversation history turns")
 
 class JagoV1ReplyData(BaseModel):
     reply: str

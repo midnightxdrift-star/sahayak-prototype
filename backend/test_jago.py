@@ -4,7 +4,13 @@ Validates grounding, conversational accuracy, multi-turn history,
 out-of-scope redirection, and multilingual Hindi support.
 """
 
+import os
 import sys
+
+# Ensure parent directory is in sys.path
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
 
 # Windows cp1252 console safety
 if sys.platform.startswith("win"):

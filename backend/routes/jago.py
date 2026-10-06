@@ -13,13 +13,14 @@ from backend.services.jago_service import JagoService
 router = APIRouter(tags=["JAGO Assistant"])
 
 @router.post("/api/jago/chat", response_model=JagoChatResponse, summary="Send message to JAGO AI scholarship assistant")
+@router.post("/jago/chat", response_model=JagoChatResponse, summary="Send message to JAGO AI scholarship assistant (unprefixed alias)")
 async def chat_with_jago(payload: JagoChatRequest):
     """
     JAGO conversational endpoint.
     Retrieves student and active application context to ground responses.
     Connects to external JAGO API, Grok API, or grounded rule engine.
     """
-    history_list = [h.dict() for h in payload.history] if payload.history else None
+    history_list = [h.dict() if hasattr(h, 'dict') else h for h in payload.history] if payload.history else None
     result = await JagoService.process_chat(
         message=payload.message,
         application_id=payload.application_id,
@@ -34,13 +35,18 @@ async def chat_with_jago(payload: JagoChatRequest):
     response_model=JagoV1ChatResponse, 
     summary="Direct V1 Chat Endpoint matching X-JAGO-API-KEY specification"
 )
+@router.post(
+    "/v1/chat", 
+    response_model=JagoV1ChatResponse, 
+    summary="Direct V1 Chat Endpoint (unprefixed alias)"
+)
 async def chat_v1(
     payload: JagoV1ChatRequest,
     x_jago_api_key: Optional[str] = Header(None, alias="X-JAGO-API-KEY")
 ):
     """
     Calling format:
-    POST /api/v1/chat
+    POST /api/v1/chat or POST /v1/chat
     Header: X-JAGO-API-KEY
     Body: { studentId, message, sessionId }
     Response: { "data": { "reply": "...", "sessionId": "..." } }
@@ -55,13 +61,15 @@ async def chat_v1(
                 detail="Invalid X-JAGO-API-KEY header."
             )
 
+    history_list = [h.dict() if hasattr(h, 'dict') else h for h in payload.history] if payload.history else None
     result = await JagoService.process_chat(
         message=payload.message,
         application_id=payload.application_id,
         scholarship_id=payload.scholarship_id,
         language=payload.language or "en",
         student_id=payload.studentId,
-        session_id=payload.sessionId
+        session_id=payload.sessionId,
+        history=history_list
     )
 
     reply_text = result.get("reply") or result.get("response") or ""

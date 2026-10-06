@@ -10,15 +10,37 @@ import {
   FALLBACK_DOCUMENTS,
   FALLBACK_PAYMENTS,
   FALLBACK_NOTIFICATIONS
-} from './fallbackData';
+} from './fallbackData.js';
+import { generateClientGroundedReply } from './jagoGroundedReplies.js';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+/**
+ * Robust Base URL determination:
+ * - Uses VITE_API_URL if it points to a valid remote URL
+ * - Always defaults to relative '/api' on Vercel, cloud, or mobile to avoid Mixed Content errors
+ */
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && !envUrl.includes('127.0.0.1') && !envUrl.includes('localhost')) {
+    return envUrl.replace(/\/+$/, '');
+  }
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return '/api';
+  }
+  return (envUrl || '/api').replace(/\/+$/, '');
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Generic request helper with error handling and fallback
  */
 async function request(endpoint, options = {}, fallback = null) {
-  const url = `${API_BASE_URL}${endpoint}`;
+  const cleanBase = API_BASE_URL.replace(/\/+$/, '');
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = cleanBase.endsWith('/api') && cleanEndpoint.startsWith('/api')
+    ? `${cleanBase}${cleanEndpoint.slice(4)}`
+    : `${cleanBase}${cleanEndpoint}`;
+
   const defaultHeaders = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -26,7 +48,7 @@ async function request(endpoint, options = {}, fallback = null) {
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3500);
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     const response = await fetch(url, {
       ...options,
@@ -50,7 +72,7 @@ async function request(endpoint, options = {}, fallback = null) {
   } catch (err) {
     if (fallback !== null) {
       console.info(`[API] Fallback activated for ${endpoint} (${err.message})`);
-      return fallback;
+      return typeof fallback === 'function' ? fallback() : fallback;
     }
     throw err;
   }
@@ -140,7 +162,7 @@ export const api = {
   async chatWithJago({ 
     message, 
     applicationId = 'MOTA-PMS-2026-00124', 
-    scholarshipId = null, 
+    scholarshipId = 'mota-post-matric', 
     language = 'en', 
     history = [],
     studentId = 'STU-2026-8841',
@@ -148,6 +170,26 @@ export const api = {
   }) {
     const jagoApiKey = import.meta.env.VITE_JAGO_API_KEY || 'jago_109b5c2ef5028e6bf5317877fa9c4120ff32899e531caf5e95cefe5f96b2625d';
     const externalJagoUrl = import.meta.env.VITE_JAGO_URL;
+
+    // Generate dynamic client-grounded response tailored to this specific query
+    const dynamicReply = generateClientGroundedReply(message, language, history);
+    const dynamicFallback = {
+      response: dynamicReply,
+      reply: dynamicReply,
+      data: {
+        reply: dynamicReply,
+        sessionId,
+        source: 'client_grounded_engine'
+      },
+      context_used: {
+        student_name: 'Ramesh Kumar',
+        application_id: applicationId,
+        current_stage: 'Sanction',
+        pending_amount: 5000,
+        action_required: 'Income certificate renewal'
+      },
+      source: 'client_grounded_engine'
+    };
 
     // 1. Direct external call if VITE_JAGO_URL is provided
     if (externalJagoUrl) {
@@ -158,7 +200,7 @@ export const api = {
             'Content-Type': 'application/json', 
             'X-JAGO-API-KEY': jagoApiKey 
           },
-          body: JSON.stringify({ studentId, message, sessionId })
+          body: JSON.stringify({ studentId, message, sessionId, history })
         });
         if (r.ok) {
           const res = await r.json();
@@ -167,7 +209,7 @@ export const api = {
             return {
               reply,
               response: reply,
-              data: { reply },
+              data: { reply, sessionId, source: 'external_jago_api' },
               source: 'external_jago_api'
             };
           }
@@ -177,7 +219,7 @@ export const api = {
       }
     }
 
-    // 2. Call backend /api/v1/chat endpoint
+    // 2. Call backend /api/v1/chat endpoint (or /v1/chat)
     return request('/v1/chat', {
       method: 'POST',
       headers: {
@@ -192,21 +234,7 @@ export const api = {
         language,
         history,
       }),
-    }, {
-      response: `Namaste Ramesh Kumar. Your application for Post-Matric Scholarship is currently in Sanction. Your pending amount of ₹5,000 for September is under verification. Please renew your expired Income Certificate in your Document Wallet to prevent any delays.`,
-      reply: `Namaste Ramesh Kumar. Your application for Post-Matric Scholarship is currently in Sanction. Your pending amount of ₹5,000 for September is under verification. Please renew your expired Income Certificate in your Document Wallet to prevent any delays.`,
-      data: {
-        reply: `Namaste Ramesh Kumar. Your application for Post-Matric Scholarship is currently in Sanction. Your pending amount of ₹5,000 for September is under verification. Please renew your expired Income Certificate in your Document Wallet to prevent any delays.`,
-      },
-      context_used: {
-        student_name: "Ramesh Kumar",
-        application_id: applicationId,
-        current_stage: "Sanction",
-        pending_amount: 5000,
-        action_required: "Income certificate renewal"
-      },
-      source: "local_grounded_fallback"
-    });
+    }, dynamicFallback);
   },
 };
 
